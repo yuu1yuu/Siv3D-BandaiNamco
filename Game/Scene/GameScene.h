@@ -1,9 +1,17 @@
 ﻿#pragma once
 
+#include "../../Pizzza.h"
+
 namespace Game
 {
 	class GameScene : public SceneBase
 	{
+	private:
+		Pizzza m_pizzza;
+
+		Camera2D m_camera;
+
+
 	public:
 		void Initialize() override;
 

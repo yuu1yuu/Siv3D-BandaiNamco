@@ -3,6 +3,9 @@
 void Game::GameScene::Initialize()
 {
 	Print << U"Game Scene Entered";
+	m_pizzza.Initialize();
+	m_camera.setCenter(Scene::CenterF());
+	m_camera.setTargetCenter(Scene::CenterF());
 }
 
 void Game::GameScene::Update()
@@ -11,12 +14,20 @@ void Game::GameScene::Update()
 	{
 		Game::SceneManager::GetInstance().ChangeScene(U"Result");
 	}
+
+	m_camera.update();
+	m_camera.setCenter(Scene::CenterF());
+
+
+	m_pizzza.Update();
+
 }
 
 void Game::GameScene::Draw() const
 {
-	FontAsset(U"GameFont")(U"Game Scene").drawAt(Scene::Center(), Palette::Green);
-	FontAsset(U"MenuFont")(U"[Space] Go to Result").drawAt(Scene::Center().movedBy(0, 60), Palette::Yellow);
-	FontAsset(U"MenuFont")(U"たかちゃ").drawAt(Scene::Center().movedBy(0, 90), Palette::Yellow);
-
+	{
+		auto t = m_camera.createTransformer();
+		m_pizzza.Render();
+	}
+	//m_camera.draw(Palette::Orange);
 }

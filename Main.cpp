@@ -25,6 +25,8 @@ void Main()
 	inputManager.BindKey("Save", 's');
 	inputManager.BindAction("Save", Game::InputEventType::Down, [&] { Print << U"save"; data.Save(U"save.json"); });
 
+
+
 	// シーン登録
 	sceneManager.Register<Game::TitleScene>("Title");
 	sceneManager.Register<Game::GameScene>("Game");

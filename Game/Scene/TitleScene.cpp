@@ -15,18 +15,18 @@ void Game::TitleScene::Initialize()
 	AudioManager::Instance().SetMasterVolume(0.5);
 	m_time = 0.0f;
 	m_clicked = false;
-
-	m_masterVol = 1.0f;
+	m_buttonClicked = false;
+	m_masterVol = 0.5f;
 }
 
 void Game::TitleScene::Update()
 {
-	if (MouseL.pressed() && !m_clicked)
+	if (m_buttonClicked && !m_clicked)
 	{
 
-		AudioManager::Instance().Play(U"TitleSE");
+		AudioManager::Instance().Play(U"TitleSE",2.35);
 		AudioManager::Instance().FadeOut(U"TitleBGM", 2.0);
-		AudioManager::Instance().FadeOut(U"TitleSE", 2.3);
+	;
 		m_time = Scene::Time();
 		m_clicked = true;
 	}
@@ -34,7 +34,7 @@ void Game::TitleScene::Update()
 	{
 		Game::SceneManager::GetInstance().ChangeScene(U"Game");
 	}
-	m_rot += 0.01f;
+	m_rot += 0.02f;
 
 	AudioManager::Instance().SetMasterVolume(m_masterVol);
 }
@@ -48,7 +48,11 @@ void Game::TitleScene::Draw()
 
 	FontAsset(U"TitleFont")(U"Pizzza Game").drawAt(Scene::Center(), Palette::Black);
 
-	FontAsset(U"MenuFont")(U"[Click] Start Game").drawAt(Scene::Center().movedBy(0, 60), Palette::Black);
-	SimpleGUI::Button(U"Click Start", Vec2(600, 600));
+
+	if (SimpleGUI::Button(U"Click Start", Vec2(580,450)))
+	{
+		m_buttonClicked = true;
+	}
+	SimpleGUI::Slider(U"masterVolume",m_masterVol,0.0,1.0,Vec2(10,680),150);
 
 }

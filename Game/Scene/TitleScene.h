@@ -14,10 +14,17 @@ namespace Game
 	private:
 
 		Texture m_backTexture;
+
 		Texture m_pizzaTexture;
+
 		float m_rot;
+
 		float m_time;
+
+
 		bool m_clicked;
+
+		bool m_buttonClicked;
 
 		double m_masterVol;
 	};

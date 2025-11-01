@@ -866,17 +866,10 @@
     <ClInclude Include="Game\Taka\Pizzza.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Game\Taka\Fruit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Taka\FruitManager.h">
-=======
     <ClInclude Include="Game\Taka\FruitManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game\Taka\Fruit.h">
->>>>>>> 2a0bb78f30d968201fd76d25ac28a455d212f822
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

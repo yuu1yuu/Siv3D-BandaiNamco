@@ -119,16 +119,10 @@
     <ClCompile Include="Game\Taka\FruitManager.cpp" />
     <ClCompile Include="GameData.cpp" />
     <ClCompile Include="Game\Scene\GameScene.cpp" />
-    <ClCompile Include="Game\Taka\Fruit.cpp" />
-    <ClCompile Include="Game\Taka\FruitManager.cpp" />
-    <ClCompile Include="Game\Taka\Pizzza.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Game\Scene\ResultScene.cpp" />
-<<<<<<< HEAD
-=======
     <ClCompile Include="Game\Taka\Pizzza.cpp" />
->>>>>>> 2a0bb78f30d968201fd76d25ac28a455d212f822
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -348,14 +342,8 @@
     <ClInclude Include="Game\Scene\ResultScene.h" />
     <ClInclude Include="Game\Scene\SceneBase.h" />
     <ClInclude Include="Game\Scene\SceneManager.h" />
-    <ClInclude Include="Game\Taka\Fruit.h" />
-    <ClInclude Include="Game\Taka\FruitManager.h" />
-    <ClInclude Include="Game\Taka\Pizzza.h" />
     <ClInclude Include="InputManager.h" />
-<<<<<<< HEAD
-=======
     <ClInclude Include="Game\Taka\Pizzza.h" />
->>>>>>> 2a0bb78f30d968201fd76d25ac28a455d212f822
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Game\Scene\TitleScene.h" />

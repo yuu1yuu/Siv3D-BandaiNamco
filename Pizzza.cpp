@@ -79,7 +79,7 @@ void Pizzza::Update()
 	}
 
 	_rot -= _rotSpeed;
-	_size +=abs(_rotSpeed);
+	_size -= -abs(_rotSpeed);
 
 	_lastMousePoint = _currentMousePoint;
 

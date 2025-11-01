@@ -91,7 +91,7 @@ void Pizzza::Render() const
 {
 	//Circle(300, 200, 150).draw();
 
-		// テクスチャを描く | Draw the texture
+	// テクスチャを描く | Draw the texture
 	_textrue.resized(100 + (10.0f * _size)).rotated(_rot).drawAt(Scene::CenterF());
 
 	FontAsset(U"TitleFont")(U"%f",_lastMousePoint.x).drawAt(Point(20,0), Palette::White);

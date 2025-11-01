@@ -20,6 +20,8 @@ private:
 
 	Point _position;
 
+	Circle _collider;
+
 public:
 
 	Pizzza()

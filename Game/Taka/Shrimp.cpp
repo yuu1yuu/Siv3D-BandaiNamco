@@ -9,6 +9,7 @@ void Shrimp::Initialize(Point pos, Circle coll)
 {
 	SetPos(pos);
 	SetColl(coll);
+
 }
 
 void Shrimp::Update()

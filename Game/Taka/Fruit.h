@@ -10,6 +10,7 @@ private:
 	Point _position;
 	Circle _collider;
 	float _size;
+	float _rot;
 public:
 	Fruit(Pizzza* pizzza)
 	{
@@ -29,6 +30,11 @@ public:
 	//サイズのセッターゲッター
 	void SetSize(float size) { _size = size; };
 	float GetSize()const { return _size; };
+
+	//サイズのセッターゲッター
+	void SetRot(float rot) { _rot = rot; };
+	float GetRot()const { return _rot; };
+
 
 	virtual void Update() = 0;
 	virtual void Draw() = 0;

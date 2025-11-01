@@ -13,10 +13,11 @@ void Shrimp::Initialize(Point pos, Circle coll)
 
 void Shrimp::Update()
 {
-	_textrue.resized(100 + (10.0f * _size)).rotated(_rot).drawAt(Scene::CenterF());
 
 }
 
 void Shrimp::Draw()
 {
+	_textrue.resized(100 + (10.0f * GetSize())).rotated(GetRot()).drawAt(GetPos());
+
 }

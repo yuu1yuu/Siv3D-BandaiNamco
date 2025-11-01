@@ -3,7 +3,7 @@
 class Shrimp : public Fruit
 {
 private:
-	Texture _texture;
+	Texture _textrue;
 
 
 public:

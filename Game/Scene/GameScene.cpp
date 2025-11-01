@@ -25,6 +25,7 @@ void Game::GameScene::Update()
 
 	m_pizzza.Update();
 
+	
 }
 
 void Game::GameScene::Draw() 
@@ -35,5 +36,4 @@ void Game::GameScene::Draw()
 		_fruitManager->Render();
 
 	}
-	//m_camera.draw(Palette::Orange);
 }

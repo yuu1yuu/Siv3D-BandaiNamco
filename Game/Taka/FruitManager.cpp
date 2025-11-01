@@ -1,5 +1,4 @@
 ﻿#include "FruitManager.h"
-#include "Shrimp.h"
 
 void FruitManager::Update(float zoom)
 {
@@ -10,16 +9,15 @@ void FruitManager::Update(float zoom)
 
 		pos = Scene::CenterF() + pos;
 
-		_fruits.emplace_back(std::make_unique<Shrimp>(_pizzza));
-		_fruits.back()->Initialize(Point((int)pos.x,(int)pos.y), Circle());
+		_fruits.emplace_back(new Fruit (_pizzza));
+		//-------------------------------------------------------ここのCircleの右側で当たり判定の半径きめる
+		_fruits.back()->Initialize(Point((int)pos.x,(int)pos.y), Circle(pos,zoom * 3.0f));
 		_fruits.back()->SetSize(zoom * 3.0f);
 	}
 	for (int i = 0; i < _fruits.size(); i++)
 	{
-		_fruits[i]->Update(-_pizzza->GetRotSpeed());
+		_fruits[i]->Update();
 	}
-
-
 }
 
 
@@ -27,6 +25,18 @@ void FruitManager::Render()
 {
 	for (int i = 0; i < _fruits.size(); i++)
 	{
-		_fruits[i]->Draw(_pizzza->GetRot());
+		_fruits[i]->Draw();
 	}
 }
+
+void FruitManager::Finalize()
+{
+	for (int i = 0; i < _fruits.size(); i++)
+	{
+		delete _fruits[i];
+		_fruits[i] = nullptr;
+	}
+
+	_fruits.clear();
+}
+

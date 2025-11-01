@@ -6,7 +6,7 @@ class FruitManager
 {
 private:
 	Pizzza* _pizzza;
-	std::vector<std::unique_ptr<Fruit>> _fruits;
+	std::vector<Fruit*> _fruits;
 	
 
 public:
@@ -20,5 +20,14 @@ public:
 	void Update(float zoom);
 
 	void Render();
+
+	void Finalize();
+
+	std::vector<Fruit*> GetFruits()
+	{
+		return _fruits;
+	};
+
+
 
 };

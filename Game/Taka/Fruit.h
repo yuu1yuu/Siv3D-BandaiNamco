@@ -12,6 +12,7 @@ private:
 	Circle _collider;
 	float _size;
 	float _rot;
+	Texture _texture;
 public:
 	Fruit(Pizzza* pizzza)
 	{
@@ -39,9 +40,12 @@ public:
 	void SetInitialPos(Point pos) { _initialPos = pos; };
 	Point GetInitialPos()const { return _initialPos; };
 
-	virtual void Update(float rot) = 0;
-	virtual void Draw(float rot) = 0;
-	virtual void Initialize(Point pos, Circle coll) = 0;
+	Pizzza* GetPizzza()const { return _pOnPizzza; };
+
+
+	virtual void Update() ;
+	virtual void Draw() ;
+	virtual void Initialize(Point pos, Circle coll);
 	
 };
 

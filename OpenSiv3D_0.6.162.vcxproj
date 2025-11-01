@@ -124,7 +124,6 @@
     <ClCompile Include="Game\Scene\ResultScene.cpp" />
     <ClCompile Include="Game\Taka\Pizzza.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
-    <ClCompile Include="Game\Taka\Shrimp.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -347,10 +346,10 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Game\Taka\Pizzza.h" />
     <ClInclude Include="ResourceManager.h" />
-    <ClInclude Include="Game\Taka\Shrimp.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Game\Scene\TitleScene.h" />
+    <ClInclude Include="Game\Taka\ToppingResources.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App\example\obj\blacksmith.obj">

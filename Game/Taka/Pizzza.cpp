@@ -10,7 +10,7 @@ void Pizzza::SetPosition(Point pos)
 
 void Pizzza::Initialize()
 {
-	_textrue = Texture{ U"../Resources/Pizzza.png" };
+	_textrue = Texture{ U"../Resources/Textures/Pizzza.png" };
 	_textrue.resized(100);
 
 	_currentMousePoint = Point(0,0);

@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "../../Game/Taka/Pizzza.h"
+#include "../../Game/Taka/FruitManager.h"
 
 namespace Game
 {
@@ -11,6 +12,7 @@ namespace Game
 
 		Camera2D m_camera;
 
+		std::unique_ptr<FruitManager> _fruitManager;
 
 	public:
 		void Initialize() override;

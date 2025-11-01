@@ -39,7 +39,7 @@ void Game::TitleScene::Update()
 	AudioManager::Instance().SetMasterVolume(m_masterVol);
 }
 
-void Game::TitleScene::Draw() const
+void Game::TitleScene::Draw() 
 {
 	Rect(Scene::Rect()).draw(ColorF(0.8f,0.5f,0));
 

@@ -17,6 +17,6 @@ namespace Game
         // 毎フレームの更新処理
         virtual void Update() = 0;
         // 毎フレームの描画処理
-        virtual void Draw() const = 0;
+        virtual void Draw()  = 0;
     };
 }

@@ -10,7 +10,7 @@ namespace Game
 
 		void Update() override;
 
-		void Draw() const override;
+		void Draw()  override;
 	private:
 
 		Texture m_backTexture;

@@ -27,7 +27,7 @@ void Game::GameScene::Update()
 
 }
 
-void Game::GameScene::Draw() const
+void Game::GameScene::Draw() 
 {
 	{
 		auto t = m_camera.createTransformer();

@@ -57,15 +57,15 @@ void Pizzza::Update()
 	{
 
 
-		//if (PToC.cross(PToL) >= 0.5f)
-		//{
-		//	_speed += (60_deg * Scene::DeltaTime() * 0.01f);
-		//	_rotSpeed = _speed;
+		if (PToC.cross(PToL) >= 0.5f)
+		{
+			_speed += (60_deg * Scene::DeltaTime() * 0.00005f) * PToCCPToL;
+			_rotSpeed += _speed * Scene::DeltaTime();
 
 
 
-		//}
-		/*else */if (PToCCPToL <= -0.5f)
+		}
+		else if (PToCCPToL <= -0.5f)
 		{
 			_speed += (60_deg * Scene::DeltaTime() * 0.00005f) * -PToCCPToL ;
 			_rotSpeed += -_speed * Scene::DeltaTime();
@@ -79,7 +79,7 @@ void Pizzza::Update()
 	}
 
 	_rot -= _rotSpeed;
-	_size += _speed;
+	_size +=abs(_rotSpeed);
 
 	_lastMousePoint = _currentMousePoint;
 

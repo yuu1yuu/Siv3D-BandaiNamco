@@ -5,6 +5,8 @@ void Game::TitleScene::Initialize()
 	m_backTexture = Texture{ U"../Resources/Title.png" };
 	m_pizzaTexture = Texture{ U"../Resources/TitlePizza.png" };
 	m_rot = 0.0f;
+	m_audio = Audio{ Audio::Stream,U"../Resources/Sounds/TitleBGM.mp3" };
+	m_audio.play();
 }
 
 void Game::TitleScene::Update()

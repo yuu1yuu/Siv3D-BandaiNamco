@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../../Pizzza.h"
+#include "../../Game/Taka/Pizzza.h"
 
 namespace Game
 {

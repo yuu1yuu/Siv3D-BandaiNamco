@@ -2,20 +2,29 @@
 
 void Game::TitleScene::Initialize()
 {
-	Print << U"Title Scene Entered";
+	m_backTexture = Texture{ U"../Resources/Title.png" };
+	m_pizzaTexture = Texture{ U"../Resources/TitlePizza.png" };
+	m_rot = 0.0f;
 }
 
 void Game::TitleScene::Update()
 {
-	if (KeyEnter.down())
+	if (MouseL.pressed())
 	{
 		Game::SceneManager::GetInstance().ChangeScene(U"Game");
 	}
-	
+	m_rot += 0.01f;
 }
 
 void Game::TitleScene::Draw() const
 {
-	FontAsset(U"TitleFont")(U"Title Scene").drawAt(Scene::Center(), Palette::White);
-	FontAsset(U"MenuFont")(U"[Enter] Start Game").drawAt(Scene::Center().movedBy(0, 60), Palette::Yellow);
+	Rect(Scene::Rect()).draw(ColorF(0.8f,0.5f,0));
+
+	m_backTexture.resized(1000.0f).drawAt(Scene::Center());
+	m_pizzaTexture.rotated(m_rot).drawAt(Scene::Center().x + 20.0f, Scene::Center().y-160.0f);
+
+	FontAsset(U"TitleFont")(U"Pizzza Game").drawAt(Scene::Center(), Palette::Black);
+
+	FontAsset(U"MenuFont")(U"[Click] Start Game").drawAt(Scene::Center().movedBy(0, 60), Palette::Black);
+
 }

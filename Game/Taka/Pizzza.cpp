@@ -94,8 +94,8 @@ void Pizzza::Render() const
 	// テクスチャを描く | Draw the texture
 	_textrue.resized(100 + (10.0f * _size)).rotated(_rot).drawAt(Scene::CenterF());
 
-	FontAsset(U"TitleFont")(U"%f",_lastMousePoint.x).drawAt(Point(20,0), Palette::White);
-	FontAsset(U"MenuFont")(U"").drawAt(Point(20,80).movedBy(0, 60), Palette::Yellow);
+	//FontAsset(U"TitleFont")(U"%f",_lastMousePoint.x).drawAt(Point(20,0), Palette::White);
+	//FontAsset(U"MenuFont")(U"").drawAt(Point(20,80).movedBy(0, 60), Palette::Yellow);
 
 }
 

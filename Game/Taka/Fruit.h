@@ -8,6 +8,7 @@ class Fruit
 private:
 	Pizzza* _pOnPizzza;
 	Point _position;
+	Point _initialPos;
 	Circle _collider;
 	float _size;
 	float _rot;
@@ -35,9 +36,11 @@ public:
 	void SetRot(float rot) { _rot = rot; };
 	float GetRot()const { return _rot; };
 
+	void SetInitialPos(Point pos) { _initialPos = pos; };
+	Point GetInitialPos()const { return _initialPos; };
 
-	virtual void Update() = 0;
-	virtual void Draw() = 0;
+	virtual void Update(float rot) = 0;
+	virtual void Draw(float rot) = 0;
 	virtual void Initialize(Point pos, Circle coll) = 0;
 	
 };

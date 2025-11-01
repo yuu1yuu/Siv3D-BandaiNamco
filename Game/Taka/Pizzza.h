@@ -42,6 +42,21 @@ public:
 
 	void Finalize();
 
+	float GetSize() const
+	{
+		return _size;
+	};
+
+	float GetRot() const
+	{
+		return _rot;
+	};
+
+	float GetRotSpeed() const
+	{
+		return _rotSpeed;
+	}
+
 
 };
 

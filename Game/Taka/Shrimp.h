@@ -10,8 +10,8 @@ public:
 	Shrimp(Pizzza* pizzza);
 
 	void Initialize(Point pos, Circle coll) override;
-	void Update()override;
-	void Draw()override;
+	void Update(float rot)override;
+	void Draw(float rot)override;
 
 };
 

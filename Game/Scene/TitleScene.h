@@ -16,7 +16,10 @@ namespace Game
 		Texture m_backTexture;
 		Texture m_pizzaTexture;
 		float m_rot;
-		Audio m_audio;
+		float m_time;
+		bool m_clicked;
+
+		double m_masterVol;
 	};
 
 }

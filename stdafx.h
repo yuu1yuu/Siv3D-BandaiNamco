@@ -10,3 +10,4 @@
 #include <stdexcept>
 #include"GameData.h"
 #include"Game/Scene/SceneManager.h"
+#include"SoundManager.h"

@@ -5,7 +5,10 @@
 
 void Main()
 {
+
+
 	Window::Resize(1280, 720);
+
 	// フォント登録
 	FontAsset::Register(U"TitleFont", 60, Typeface::Bold);
 	FontAsset::Register(U"GameFont", 50, Typeface::Bold);
@@ -37,6 +40,8 @@ void Main()
 
 	while (System::Update())
 	{
+		// 毎フレーム更新を呼ぶ
+		AudioManager::Instance().Update();
 		Game::InputManager::GetInstance().Update();
 		sceneManager.Update();
 		sceneManager.Draw();

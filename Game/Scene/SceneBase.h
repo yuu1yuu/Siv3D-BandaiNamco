@@ -1,5 +1,4 @@
-﻿#include "Pizzza.h"
-#pragma once
+﻿#pragma once
 
 namespace Game
 {

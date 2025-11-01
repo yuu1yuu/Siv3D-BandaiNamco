@@ -16,6 +16,9 @@ void Pizzza::Initialize()
 	_currentMousePoint = Point(0,0);
 	_lastMousePoint = Point(0,0);
 
+	_currentPadStickVec = Point(0, 0);
+	_lastPadStickVec = Point(0, 0);
+
 }
 
 void Pizzza::Update()
@@ -39,29 +42,40 @@ void Pizzza::Update()
 	//PToC.normalize();
 	//PToL.normalize();
 
+	float PToCCPToL = PToC.cross(PToL);
 
+	if (Gamepad(0).isConnected())
+	{
+		_currentPadStickVec = Vector2D((Gamepad(0).axes[2] * 100.0f), (Gamepad(0).axes[3] * 100.0f));
 
-	if (MouseL.pressed())
+		PToCCPToL = _currentPadStickVec.cross(_lastPadStickVec);
+
+		_lastPadStickVec = _currentPadStickVec;
+	}
+
+	if (MouseL.pressed() || Gamepad(0).isConnected())
 	{
 
 
-		if (PToC.cross(PToL) >= 0.5f)
-		{
-			_speed += (60_deg * Scene::DeltaTime() * 0.01f);
-			_rotSpeed = _speed;
+		//if (PToC.cross(PToL) >= 0.5f)
+		//{
+		//	_speed += (60_deg * Scene::DeltaTime() * 0.01f);
+		//	_rotSpeed = _speed;
 
-		}
-		else if (PToC.cross(PToL) <= -0.5f)
+
+
+		//}
+		/*else */if (PToCCPToL <= -0.5f)
 		{
-			_speed += (60_deg * Scene::DeltaTime() * 0.01f);
-			_rotSpeed =-_speed;
+			_speed += (60_deg * Scene::DeltaTime() * 0.00005f) * -PToCCPToL ;
+			_rotSpeed += -_speed * Scene::DeltaTime();
 
 		}
 	}
 	else
 	{
 		_speed *= 0.9f;
-		_rotSpeed *= 0.89f;
+		_rotSpeed *= 0.99f;
 	}
 
 	_rot -= _rotSpeed;

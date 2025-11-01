@@ -15,6 +15,9 @@ private:
 
 	Point _currentMousePoint;
 
+	Vector2D<double> _lastPadStickVec;
+	Vector2D<double> _currentPadStickVec;
+
 	Point _position;
 
 public:

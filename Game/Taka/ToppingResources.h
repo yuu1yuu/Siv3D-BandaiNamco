@@ -1,7 +1,7 @@
 ﻿#pragma once
 class ToppingResources
 {
-	static constexpr int NUMS = 4;
+	static constexpr int NUMS = 6;
 
 public:
 
@@ -30,6 +30,11 @@ public:
 			break;
 		case 4:
 			tex = Texture{ U"../Resources/Textures/tomato.png" };
+
+			break;
+
+		case 5:
+			tex = Texture{ U"../Resources/Textures/ebi.png" };
 
 			break;
 		}

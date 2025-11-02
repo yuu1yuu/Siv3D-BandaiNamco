@@ -34,7 +34,7 @@ void Fruit::Update()
 
 void Fruit::Draw()
 {
-	_collider.draw();
+	//_collider.draw();
 
 	_texture.resized(100 + (10.0f * GetSize())).rotated(GetRot()).drawAt(GetPos());
 }

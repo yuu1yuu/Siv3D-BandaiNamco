@@ -4,6 +4,12 @@ namespace Game
 {
 	class ResultScene : public SceneBase
 	{
+	private :
+		Texture _backTex;
+
+
+		bool m_buttonClicked;
+
 	public:
 		void Initialize() override;
 

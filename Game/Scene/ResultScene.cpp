@@ -3,6 +3,9 @@
 void Game::ResultScene::Initialize()
 {
 	Print << U"Result Scene Entered";
+
+	_backTex = Texture{ U"../Resources/Textures/Result.jpg" };
+
 }
 
 void Game::ResultScene::Update()
@@ -11,14 +14,26 @@ void Game::ResultScene::Update()
 	{
 		Game::SceneManager::GetInstance().ChangeScene(U"Title");
 	}
+
+	if (m_buttonClicked)
+	{
+		Game::SceneManager::GetInstance().ChangeScene(U"Title");
+	}
 }
 
 void Game::ResultScene::Draw() 
 {
-	FontAsset(U"ResultFont")(U"Result Scene").drawAt(Scene::Center(), Palette::Red);
-	FontAsset(U"MenuFont")(U"[Enter] Back to Title").drawAt(Scene::Center().movedBy(0, 60), Palette::Yellow);
+
+	_backTex.resized(1300).drawAt(Scene::Center());
+
+	if (SimpleGUI::Button(U"Return Title", Vec2(120, 500),120))
+	{
+		m_buttonClicked = true;
+	}
+
 
 	float score;
 	score = GameData::GetInstance().Get<float>("Score");
-	FontAsset(U"MenuFont")(U"", (int)score).drawAt(Point(100, 100));
+	
+	FontAsset(U"ResultFont")(U"SCORE:", (int)score).drawAt(150, 450 + sinf(Scene::Time() * 3) * 10);
 }

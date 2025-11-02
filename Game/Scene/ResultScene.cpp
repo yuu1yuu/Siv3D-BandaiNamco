@@ -5,18 +5,23 @@ void Game::ResultScene::Initialize()
 
 	_backTex = Texture{ U"../Resources/Textures/Result.jpg" };
 
+
+	//Audio
+	AudioManager::Instance().Load(U"ResultBGM", U"../Resources/Sounds/ResultBGM.mp3");
+	AudioManager::Instance().Play(U"ResultBGM");
+	AudioManager::Instance().Load(U"ResultSE", U"../Resources/Sounds/wow-pizza-arrived-170930.mp3");
+	AudioManager::Instance().Play(U"ResultSE", 2.35);
+
 }
 
 void Game::ResultScene::Update()
 {
-	if (KeyEnter.down())
-	{
-		Game::SceneManager::GetInstance().ChangeScene(U"Title");
-	}
+
 
 	if (m_buttonClicked)
 	{
 		Game::SceneManager::GetInstance().ChangeScene(U"Title");
+		AudioManager::Instance().FadeOut(U"ResultBGM", 2.0);
 	}
 }
 

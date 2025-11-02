@@ -17,6 +17,11 @@ void Game::GameScene::Initialize()
 	_backTex2 = Texture{ U"../Resources/Textures/utyu.png" };
 
 	_startTime = Scene::Time();
+
+	//Audio
+	AudioManager::Instance().Load(U"GameBGM", U"../Resources/Sounds/GameBGM.mp3");
+	AudioManager::Instance().Play(U"GameBGM");
+
 }
 
 void Game::GameScene::Update()
@@ -44,7 +49,7 @@ void Game::GameScene::Update()
 	if (30 - ((int)Scene::Time() - (int)_startTime) <= 0)
 	{
 		Game::SceneManager::GetInstance().ChangeScene(U"Result");
-
+		AudioManager::Instance().FadeOut(U"GameBGM", 2.0);
 	}
 }
 
@@ -61,7 +66,7 @@ void Game::GameScene::Draw()
 
 	}
 
-	FontAsset(U"MenuFont")(U"Score :",(int)_score).drawAt(Point(100,20), Palette::Black);
+	FontAsset(U"MenuFont")(U"Score :",(int)_score).drawAt(Point(100,20), Palette::White);
 
-	FontAsset(U"MenuFont")(U"",30-((int)Scene::Time() - (int)_startTime)).drawAt(Point(600,100), Palette::Black);
+	FontAsset(U"MenuFont")(U"",30-((int)Scene::Time() - (int)_startTime)).drawAt(Point(600,100), Palette::White);
 }

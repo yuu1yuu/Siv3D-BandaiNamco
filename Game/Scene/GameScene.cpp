@@ -5,7 +5,6 @@
 
 void Game::GameScene::Initialize()
 {
-	Print << U"Game Scene Entered";
 	m_pizzza.Initialize();
 	m_camera.setCenter(Scene::CenterF());
 	m_camera.setTargetCenter(Scene::CenterF());
@@ -62,7 +61,7 @@ void Game::GameScene::Draw()
 
 	}
 
-	FontAsset(U"MenuFont")(U"",(int)_score).drawAt(Point(100,100));
+	FontAsset(U"MenuFont")(U"Score :",(int)_score).drawAt(Point(100,20), Palette::Black);
 
-	FontAsset(U"MenuFont")(U"",30-((int)Scene::Time() - (int)_startTime)).drawAt(Point(600,100));
+	FontAsset(U"MenuFont")(U"",30-((int)Scene::Time() - (int)_startTime)).drawAt(Point(600,100), Palette::Black);
 }

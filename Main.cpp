@@ -21,11 +21,6 @@ void Main()
 
 	Game::InputManager& inputManager = Game::InputManager::GetInstance();
 
-
-	inputManager.BindKey("JUMP", 'w');
-	inputManager.BindAction("JUMP", Game::InputEventType::Down, [] { Print << U"JUMP!"; });
-
-	inputManager.BindKey("Save", 's');
 	//inputManager.BindAction("Save", Game::InputEventType::Down, [&] { Print << U"save"; data.Save(U"save.json"); });
 
 

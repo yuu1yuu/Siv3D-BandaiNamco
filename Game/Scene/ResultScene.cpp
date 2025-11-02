@@ -2,7 +2,6 @@
 
 void Game::ResultScene::Initialize()
 {
-	Print << U"Result Scene Entered";
 
 	_backTex = Texture{ U"../Resources/Textures/Result.jpg" };
 

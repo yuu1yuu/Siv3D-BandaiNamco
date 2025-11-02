@@ -16,16 +16,13 @@ void Game::GameScene::Initialize()
 	Cursor::RequestStyle(CursorStyle::Hidden);
 	_backTex = Texture{ U"../Resources/Textures/background.png" };
 
+	_startTime = Scene::Time();
 }
 
 void Game::GameScene::Update()
 {
 	Cursor::RequestStyle(CursorStyle::Hidden);
 
-	if (KeySpace.down())
-	{
-		Game::SceneManager::GetInstance().ChangeScene(U"Result");
-	}
 
 	// 経過時間をもとにズーム値を減らす
 	zoom -= zoomOutSpeed * Scene::DeltaTime();
@@ -39,12 +36,22 @@ void Game::GameScene::Update()
 	_fruitManager->Update(1.0f / m_camera.getScale());
 
 	m_pizzza.Update();
+
+
+
+
+	// 30秒経過したら処理
+	if (30 - ((int)Scene::Time() - (int)_startTime) <= 0)
+	{
+		Game::SceneManager::GetInstance().ChangeScene(U"Result");
+
+	}
 }
 
 void Game::GameScene::Draw() 
 {
 	{
-		_backTex.resized(10000).drawAt(Scene::Center());
+		_backTex.resized(1500).drawAt(Scene::Center());
 		auto t = m_camera.createTransformer();
 		m_pizzza.Render();
 		_fruitManager->Render();
@@ -52,4 +59,6 @@ void Game::GameScene::Draw()
 	}
 
 	FontAsset(U"MenuFont")(U"",(int)_score).drawAt(Point(100,100));
+
+	FontAsset(U"MenuFont")(U"",30-((int)Scene::Time() - (int)_startTime)).drawAt(Point(300,100));
 }

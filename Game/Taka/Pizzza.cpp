@@ -19,6 +19,7 @@ void Pizzza::Initialize()
 	_currentPadStickVec = Point(0, 0);
 	_lastPadStickVec = Point(0, 0);
 
+	_collider = Circle(Scene::Center(), 100 + (10.0f * _size));
 }
 
 void Pizzza::Update()
@@ -81,14 +82,18 @@ void Pizzza::Update()
 
 	_lastMousePoint = _currentMousePoint;
 
+	_collider.r = (100 + (10.0f * _size) )/ 2.0f;
 	
 
 }
 
 void Pizzza::Render() const
 {
+
+
 	// テクスチャを描く | Draw the texture
 	_textrue.resized(100 + (10.0f * _size)).rotated(_rot).drawAt(Scene::CenterF());
+
 }
 
 void Pizzza::Finalize()

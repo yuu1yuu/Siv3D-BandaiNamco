@@ -3,17 +3,24 @@ class Pizzza
 {
 private:
 
+	//テクスチャ
 	Texture _textrue;
 
+	//現在の回転
 	float _rot;
+	//大きさ
 	float _size;
-	float _speed;
 
+	//現在の回転量
+	float _speed;
 	float _rotSpeed;
 
+	//前のフレームでのマウスの座標
 	Point _lastMousePoint;
 
+	//今のフレームのマウスの座標
 	Point _currentMousePoint;
+
 
 	Vector2D<double> _lastPadStickVec;
 	Vector2D<double> _currentPadStickVec;
@@ -42,21 +49,28 @@ public:
 
 	void Finalize();
 
+	//サイズの取得
 	float GetSize() const
 	{
 		return _size;
 	};
 
+	//現在の回転を取得
 	float GetRot() const
 	{
 		return _rot;
 	};
 
+	//現在の回転量を取得
 	float GetRotSpeed() const
 	{
 		return _rotSpeed;
 	}
 
-
+	//当たり判定の円を取得
+	Circle GetCollider() const
+	{
+		return _collider;
+	}
 };
 

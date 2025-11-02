@@ -1,5 +1,8 @@
 ﻿#include "GameScene.h"
 
+
+
+
 void Game::GameScene::Initialize()
 {
 	Print << U"Game Scene Entered";
@@ -7,12 +10,17 @@ void Game::GameScene::Initialize()
 	m_camera.setCenter(Scene::CenterF());
 	m_camera.setTargetCenter(Scene::CenterF());
 
-	_fruitManager = std::make_unique<FruitManager>(&m_pizzza);
+	_score = 0.0f;
+
+	_fruitManager = std::make_unique<FruitManager>(this,&m_pizzza);
+	Cursor::RequestStyle(CursorStyle::Hidden);
 
 }
 
 void Game::GameScene::Update()
 {
+	Cursor::RequestStyle(CursorStyle::Hidden);
+
 	if (KeySpace.down())
 	{
 		Game::SceneManager::GetInstance().ChangeScene(U"Result");
@@ -24,8 +32,6 @@ void Game::GameScene::Update()
 	_fruitManager->Update(1.0f / m_camera.getScale());
 
 	m_pizzza.Update();
-
-	
 }
 
 void Game::GameScene::Draw() 
@@ -36,4 +42,6 @@ void Game::GameScene::Draw()
 		_fruitManager->Render();
 
 	}
+
+	FontAsset(U"MenuFont")(U"",(int)_score).drawAt(Point(100,100));
 }

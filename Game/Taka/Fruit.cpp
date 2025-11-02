@@ -9,6 +9,11 @@ void Fruit::Initialize(Point pos, Circle coll)
 	SetColl(coll);
 	SetRot(0.0f);
 	_texture = ToppingResources::GetRandomTexture();
+
+	_collider.setPos(_position);
+	_collider.r = (100 + (10.0f * GetSize())) / 2.0f;
+
+
 }
 
 void Fruit::Update()
@@ -23,6 +28,8 @@ void Fruit::Update()
 	SetPos(Point((int)newPos.x, (int)newPos.y));
 
 	_collider.setPos(_position);
+	_collider.r = (100 + (10.0f * GetSize())) / 2.0f;
+
 }
 
 void Fruit::Draw()

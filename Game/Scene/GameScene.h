@@ -22,6 +22,7 @@ namespace Game
 		float _score;
 
 		Texture _backTex;
+		Texture _backTex2;
 
 		double _startTime;
 	public:
@@ -33,11 +34,14 @@ namespace Game
 
 		void AddScore(float as)
 		{
+			
 			_score += as;
+			GameData::GetInstance().Set("Score", _score);
 		};
 		void SetScore(float score)
 		{
 			_score = score;
+			GameData::GetInstance().Set("Score", _score);
 		};
 		float GetScore()const
 		{

@@ -15,6 +15,7 @@ void Game::GameScene::Initialize()
 	_fruitManager = std::make_unique<FruitManager>(this,&m_pizzza);
 	Cursor::RequestStyle(CursorStyle::Hidden);
 	_backTex = Texture{ U"../Resources/Textures/background.png" };
+	_backTex2 = Texture{ U"../Resources/Textures/utyu.png" };
 
 	_startTime = Scene::Time();
 }
@@ -25,7 +26,7 @@ void Game::GameScene::Update()
 
 
 	// 経過時間をもとにズーム値を減らす
-	zoom -= zoomOutSpeed * Scene::DeltaTime();
+	zoom *= 0.999;// zoomOutSpeed * Scene::DeltaTime();
 
 	// 下限に制限
 	zoom = Max(zoom, minZoom);
@@ -51,8 +52,11 @@ void Game::GameScene::Update()
 void Game::GameScene::Draw() 
 {
 	{
-		_backTex.resized(1500).drawAt(Scene::Center());
+
 		auto t = m_camera.createTransformer();
+		_backTex2.resized(200000).drawAt(Scene::Center());
+		_backTex.resized(1500).rounded(50.0f).drawAt(Scene::Center());
+
 		m_pizzza.Render();
 		_fruitManager->Render();
 
@@ -60,5 +64,5 @@ void Game::GameScene::Draw()
 
 	FontAsset(U"MenuFont")(U"",(int)_score).drawAt(Point(100,100));
 
-	FontAsset(U"MenuFont")(U"",30-((int)Scene::Time() - (int)_startTime)).drawAt(Point(300,100));
+	FontAsset(U"MenuFont")(U"",30-((int)Scene::Time() - (int)_startTime)).drawAt(Point(600,100));
 }

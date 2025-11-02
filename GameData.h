@@ -1,5 +1,7 @@
 ﻿#pragma once
-
+#include <unordered_map>
+#include <any>
+#include <string>
 
 namespace Game
 {
@@ -8,41 +10,47 @@ namespace Game
 	public:
 		static GameData& GetInstance();
 
-		// データ設定
+		// データ設定（どんな型でもOK）
 		template <class T>
 		void Set(const std::string& key, const T& value)
 		{
-			JSON json;
-			json = value;
-			m_data[key] = json;
+			m_data[key] = value; // std::any に格納
 		}
 
-		// データ取得（存在しない場合はdefaultValueを返す）
+		// データ取得（型が違う場合は defaultValue を返す）
 		template <class T>
-		T Get(const std::string& key, const T& defaultValue = T{}) const
+		T Get(const std::string& key)
 		{
-			if (auto it = m_data.find(key); it != m_data.end())
+			auto it = m_data.find(key);
+			if (it != m_data.end())
 			{
-				return it->second.getOr<T>(defaultValue);
+				try
+				{
+					return std::any_cast<T>(it->second);
+				}
+				catch (const std::bad_any_cast&)
+				{
+					// 型が一致しなかった場合
+				}
 			}
-			return defaultValue;
+			return 0;
 		}
 
 		// データの有無を確認
-		bool Has(const std::string& key) const;
+		bool Has(const std::string& key) const
+		{
+			return m_data.find(key) != m_data.end();
+		}
 
 		// 全データ削除
-		void Clear();
-
-		// セーブ / ロード
-		bool Save(const FilePath& path) const;
-		bool Load(const FilePath& path);
-
-		// デバッグ表示
-		void DrawDebug(const Vec2& pos) const;
+		void Clear()
+		{
+			m_data.clear();
+		}
 
 	private:
 		GameData() = default;
-		std::unordered_map<String, JSON> m_data;
+
+		std::unordered_map<std::string, std::any> m_data;
 	};
 }

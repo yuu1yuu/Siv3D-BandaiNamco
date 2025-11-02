@@ -14,11 +14,14 @@ namespace Game
 		Pizzza m_pizzza;
 
 		Camera2D m_camera;
-
+		double zoom = 1.0;                   // 現在のズーム値
+		const double zoomOutSpeed = 0.1;     // ズームアウト速度（1秒あたりどれくらい引くか）
+		const double minZoom = 0.01;          // ズームアウトの下限
 		std::unique_ptr<FruitManager> _fruitManager;
 
 		float _score;
 
+		Texture _backTex;
 	public:
 		void Initialize() override;
 

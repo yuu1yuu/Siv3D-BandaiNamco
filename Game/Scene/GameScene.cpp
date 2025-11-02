@@ -14,6 +14,7 @@ void Game::GameScene::Initialize()
 
 	_fruitManager = std::make_unique<FruitManager>(this,&m_pizzza);
 	Cursor::RequestStyle(CursorStyle::Hidden);
+	_backTex = Texture{ U"../Resources/Textures/background.png" };
 
 }
 
@@ -26,7 +27,13 @@ void Game::GameScene::Update()
 		Game::SceneManager::GetInstance().ChangeScene(U"Result");
 	}
 
-	m_camera.update();
+	// 経過時間をもとにズーム値を減らす
+	zoom -= zoomOutSpeed * Scene::DeltaTime();
+
+	// 下限に制限
+	zoom = Max(zoom, minZoom);
+
+	m_camera.setScale(zoom);
 	m_camera.setCenter(Scene::CenterF());
 
 	_fruitManager->Update(1.0f / m_camera.getScale());
@@ -37,6 +44,7 @@ void Game::GameScene::Update()
 void Game::GameScene::Draw() 
 {
 	{
+		_backTex.resized(10000).drawAt(Scene::Center());
 		auto t = m_camera.createTransformer();
 		m_pizzza.Render();
 		_fruitManager->Render();
